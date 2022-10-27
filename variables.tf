@@ -29,7 +29,7 @@ variable "preferred_number_of_private_subnets" {
 }
 
 variable "environment" {
-  type = string
+  type    = string
   default = "dev"
 }
 variable "tags" {
