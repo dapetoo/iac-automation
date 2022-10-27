@@ -1,16 +1,11 @@
-variable "name" {
-  type    = string
-  default = "PBL"
-}
-
-variable "environment" {
-  type    = string
-  default = "dev"
-}
-
 variable "region" {
   type        = string
   description = "The region to deploy resources"
+}
+
+variable "environment" {
+  type        = string
+  description = "The environment to deploy resources"
 }
 
 variable "vpc_cidr" {
@@ -42,6 +37,12 @@ variable "preferred_number_of_public_subnets" {
 variable "preferred_number_of_private_subnets" {
   type        = number
   description = "Number of private subnets"
+}
+
+variable "name" {
+  type    = string
+  default = "ACS"
+
 }
 
 variable "tags" {

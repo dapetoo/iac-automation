@@ -13,9 +13,9 @@ data "aws_route53_zone" "dapetoo" {
 }
 
 # selecting validation method
-resource "aws_route53_record" "oyindamola" {
+resource "aws_route53_record" "dapetoo" {
   for_each = {
-    for dvo in aws_acm_certificate.oyindamola.domain_validation_options : dvo.domain_name => {
+    for dvo in aws_acm_certificate.dapetoo.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
       type   = dvo.resource_record_type
@@ -27,19 +27,19 @@ resource "aws_route53_record" "oyindamola" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = data.aws_route53_zone.oyindamola.zone_id
+  zone_id         = data.aws_route53_zone.dapetoo.zone_id
 }
 
 # validate the certificate through DNS method
-resource "aws_acm_certificate_validation" "oyindamola" {
-  certificate_arn         = aws_acm_certificate.oyindamola.arn
-  validation_record_fqdns = [for record in aws_route53_record.oyindamola : record.fqdn]
+resource "aws_acm_certificate_validation" "dapetoo" {
+  certificate_arn         = aws_acm_certificate.dapetoo.arn
+  validation_record_fqdns = [for record in aws_route53_record.dapetoo : record.fqdn]
 }
 
 # create records for tooling
 resource "aws_route53_record" "tooling" {
-  zone_id = data.aws_route53_zone.oyindamola.zone_id
-  name    = "tooling.oyindamola.gq"
+  zone_id = data.aws_route53_zone.dapetoo.zone_id
+  name    = "tooling.peterdada.me"
   type    = "A"
 
   alias {
@@ -51,7 +51,7 @@ resource "aws_route53_record" "tooling" {
 
 # create records for wordpress
 resource "aws_route53_record" "wordpress" {
-  zone_id = data.aws_route53_zone.oyindamola.zone_id
+  zone_id = data.aws_route53_zone.dapetoo.zone_id
   name    = "wordpress.dapetoo.me"
   type    = "A"
 

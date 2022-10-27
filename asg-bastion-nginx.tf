@@ -1,9 +1,9 @@
 #### creating sns topic for all the auto scaling groups
-resource "aws_sns_topic" "david-sns" {
+resource "aws_sns_topic" "dapetoo-sns" {
   name = "Default_CloudWatch_Alarms_Topic"
 }
 
-resource "aws_autoscaling_notification" "david_notifications" {
+resource "aws_autoscaling_notification" "dapetoo_notifications" {
   group_names = [
     aws_autoscaling_group.bastion-asg.name,
     aws_autoscaling_group.nginx-asg.name,
@@ -17,7 +17,7 @@ resource "aws_autoscaling_notification" "david_notifications" {
     "autoscaling:EC2_INSTANCE_TERMINATE_ERROR",
   ]
 
-  topic_arn = aws_sns_topic.david-sns.arn
+  topic_arn = aws_sns_topic.dapetoo-sns.arn
 }
 
 
@@ -56,7 +56,7 @@ resource "aws_launch_template" "bastion-launch-template" {
     )
   }
 
-  user_data = filebase64("${path.module}/bastion.sh")
+#   user_data = filebase64("${path.module}/bastion.sh")
 }
 
 # ---- Autoscaling for bastion  hosts
@@ -118,7 +118,7 @@ resource "aws_launch_template" "nginx-launch-template" {
     )
   }
 
-  user_data = filebase64("${path.module}/nginx.sh")
+#   user_data = filebase64("${path.module}/nginx.sh")
 }
 
 # ------ Autoscslaling group for reverse proxy nginx ---------
