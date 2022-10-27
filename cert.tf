@@ -1,14 +1,14 @@
 # The entire section create a certiface, public zone, and validate the certificate using DNS method
 
-# Create the certificate using a wildcard for all the domains created in oyindamola.gq
+# Create the certificate using a wildcard for all the domains created in peterdada.me
 resource "aws_acm_certificate" "oyindamola" {
-  domain_name       = "*.oyindamola.gq"
+  domain_name       = "*.peterdada.me"
   validation_method = "DNS"
 }
 
 # calling the hosted zone
-data "aws_route53_zone" "oyindamola" {
-  name         = "oyindamola.gq"
+data "aws_route53_zone" "dapetoo" {
+  name         = "peterdada.me"
   private_zone = false
 }
 
@@ -52,7 +52,7 @@ resource "aws_route53_record" "tooling" {
 # create records for wordpress
 resource "aws_route53_record" "wordpress" {
   zone_id = data.aws_route53_zone.oyindamola.zone_id
-  name    = "wordpress.oyindamola.gq"
+  name    = "wordpress.dapetoo.me"
   type    = "A"
 
   alias {
