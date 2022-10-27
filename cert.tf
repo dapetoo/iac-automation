@@ -1,7 +1,7 @@
 # The entire section create a certiface, public zone, and validate the certificate using DNS method
 
 # Create the certificate using a wildcard for all the domains created in peterdada.me
-resource "aws_acm_certificate" "oyindamola" {
+resource "aws_acm_certificate" "dapetoo" {
   domain_name       = "*.peterdada.me"
   validation_method = "DNS"
 }
