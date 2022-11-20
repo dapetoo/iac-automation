@@ -9,7 +9,7 @@ resource "aws_kms_key" "ACS-kms" {
     {
       "Sid": "Enable IAM User Permissions",
       "Effect": "Allow",
-      "Principal": { "AWS": "arn:aws:iam::${var.account_no}:user/Administrator" },
+      "Principal": { "AWS": "arn:aws:iam::${var.account_no}:user/segun" },
       "Action": "kms:*",
       "Resource": "*"
     }
@@ -29,27 +29,30 @@ resource "aws_efs_file_system" "ACS-efs" {
   encrypted  = true
   kms_key_id = aws_kms_key.ACS-kms.arn
 
-  tags = merge(
+tags = merge(
     var.tags,
     {
-      Name = "ACS-efs"
+      Name = "ACS-file-system"
     },
   )
 }
 
+
 # set first mount target for the EFS 
 resource "aws_efs_mount_target" "subnet-1" {
   file_system_id  = aws_efs_file_system.ACS-efs.id
-  subnet_id       = aws_subnet.private[2].id
-  security_groups = [aws_security_group.datalayer-sg.id]
+  subnet_id       = var.efs-subnet-1
+  security_groups = var.efs-sg
 }
+
 
 # set second mount target for the EFS 
 resource "aws_efs_mount_target" "subnet-2" {
   file_system_id  = aws_efs_file_system.ACS-efs.id
-  subnet_id       = aws_subnet.private[3].id
-  security_groups = [aws_security_group.datalayer-sg.id]
+  subnet_id       = var.efs-subnet-2
+  security_groups = var.efs-sg
 }
+
 
 # create access point for wordpress
 resource "aws_efs_access_point" "wordpress" {
@@ -72,6 +75,7 @@ resource "aws_efs_access_point" "wordpress" {
   }
 
 }
+
 
 # create access point for tooling
 resource "aws_efs_access_point" "tooling" {
