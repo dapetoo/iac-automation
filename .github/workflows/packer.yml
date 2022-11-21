@@ -18,9 +18,9 @@ jobs:
       - name: Change directory
         run: cd AMI && ls -al
       - name: Install Packer
-        run: curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && sudo apt-get update && sudo apt-get install packer
-      - name: Packer
-        run: packer
+        run: curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && sudo apt-get update && sudo apt-get install -y packer
+      - name: Packer initialization
+        run: cd AMI/ && packer init bastion.pkr.hcl && packer init nginx.pkr.hcl && packer init ubuntu.pkr.hcl && packer init web.pkr.hcl
       # # build artifact
       # - name: Initialize
       #   uses: hashicorp/packer-github-actions@master
