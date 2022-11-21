@@ -6,9 +6,6 @@ on:
   push:
     branches:
       - terraform-cloud
-    paths:
-      - packer/**
-      - .github/workflows/packer.yml
 
 jobs:
   packer:
