@@ -25,14 +25,23 @@ jobs:
       #   uses: hashicorp/packer-github-actions@master
       #   with:
       #     command: fix
+      # build artifact
+      - name: Initialize
+        uses: hashicorp/packer-github-actions@master
+        with:
+          command: init
+          arguments: "-color=false -on-error=abort"
+          target: bastion.pkr.hcl nginx.pkr.hcl ubuntu.pkr.hcl web.pkr.hcl
+          working_directory: AMI/
 
       # validate templates
-      # - name: Validate Template
-      #   uses: hashicorp/packer-github-actions@master
-      #   with:
-      #     command: validate
-      #     arguments: -syntax-only
-      #     target: bastion.pkr.hcl nginx.pkr.hcl ubuntu.pkr.hcl web.pkr.hcl
+      - name: Validate Template
+        uses: hashicorp/packer-github-actions@master
+        with:
+          command: validate
+          working_directory: AMI/
+          arguments: -syntax-only
+          target: bastion.pkr.hcl nginx.pkr.hcl ubuntu.pkr.hcl web.pkr.hcl
 
       # build artifact
       - name: Build Artifact
