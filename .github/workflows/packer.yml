@@ -22,4 +22,4 @@ jobs:
       - name: Packer initialization
         run: cd AMI/ && packer init bastion.pkr.hcl && packer init nginx.pkr.hcl && packer init ubuntu.pkr.hcl && packer init web.pkr.hcl
       - name: Packer Build
-        run: packer build bastion.pkr.hcl && packer build nginx.pkr.hcl && packer build ubuntu.pkr.hcl && packer build web.pkr.hcl
+        run: cd AMI/ && packer build bastion.pkr.hcl && packer build nginx.pkr.hcl && packer build ubuntu.pkr.hcl && packer build web.pkr.hcl
