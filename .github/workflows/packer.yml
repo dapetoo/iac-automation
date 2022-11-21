@@ -21,7 +21,7 @@ jobs:
         with:
           command: validate
           arguments: -syntax-only
-          target: packer.pkr.hcl
+          target: bastion.pkr.hcl
           working_directory: AMI
       # - name: Change directory
       #   run: export AWS_ACCESS_KEY_ID=${{ secrets.aws_access_key_id }} && export AWS_ACCESS_KEY_ID=${{ secrets.aws_secret_access_key }}
