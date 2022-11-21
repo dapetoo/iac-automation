@@ -1,13 +1,3 @@
-# terraform {
-#   backend "s3" {
-#     bucket = "dapteoo-terraform-bucket-1"
-#     key    = "global/s3/terraform.tfstate"
-#     region = "us-east-1"
-#     # dynamodb_table = "terraform-locks"
-#     encrypt = true
-#   }
-# }
-
 # creating VPC
 module "VPC" {
   source                              = "./modules/vpc"
@@ -43,9 +33,9 @@ module "security" {
 
 module "AutoScaling" {
   source            = "./modules/asg"
-  ami-web           = var.ami
-  ami-bastion       = var.ami
-  ami-nginx         = var.ami
+  ami-web           = var.ami-web
+  ami-bastion       = var.ami-bastion
+  ami-nginx         = var.ami-nginx
   desired_capacity  = 2
   min_size          = 2
   max_size          = 2
@@ -79,9 +69,9 @@ module "RDS" {
 
 module "compute" {
   source          = "./modules/ec2"
-  ami-jenkins     = var.ami
-  ami-sonar       = var.ami
-  ami-jfrog       = var.ami
+  ami-jenkins     = var.ami-sonar
+  ami-sonar       = var.ami-sonar
+  ami-jfrog       = var.ami-sonar
   subnets-compute = module.VPC.public_subnets-1
   sg-compute      = [module.security.ALB-sg]
   keypair         = var.keypair
