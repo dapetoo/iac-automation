@@ -67,6 +67,7 @@ module "RDS" {
   private_subnets = [module.VPC.private_subnets-3, module.VPC.private_subnets-4]
 }
 
+
 module "compute" {
   source          = "./modules/ec2"
   ami-jenkins     = var.ami-sonar
@@ -76,5 +77,3 @@ module "compute" {
   sg-compute      = [module.security.ALB-sg]
   keypair         = var.keypair
 }
-
-
