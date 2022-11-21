@@ -32,7 +32,7 @@ jobs:
         with:
           command: validate
           arguments: -syntax-only
-          target: packer.pkr.hcl
+          target: bastion.pkr.hcl nginx.pkr.hcl ubuntu.pkr.hcl web.pkr.hcl
 
       # build artifact
       - name: Build Artifact
