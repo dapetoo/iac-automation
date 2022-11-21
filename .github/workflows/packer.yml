@@ -21,35 +21,5 @@ jobs:
         run: curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && sudo apt-get update && sudo apt-get install -y packer
       - name: Packer initialization
         run: cd AMI/ && packer init bastion.pkr.hcl && packer init nginx.pkr.hcl && packer init ubuntu.pkr.hcl && packer init web.pkr.hcl
-      # # build artifact
-      # - name: Initialize
-      #   uses: hashicorp/packer-github-actions@master
-      #   with:
-      #     command: init
-      #     arguments: "-color=false -on-error=abort"
-      #     target: bastion.pkr.hcl nginx.pkr.hcl ubuntu.pkr.hcl web.pkr.hcl
-      #     working_directory: AMI
-
-      # # validate templates
-      # - name: Validate Template
-      #   uses: hashicorp/packer-github-actions@master
-      #   with:
-      #     command: validate
-      #     working_directory: AMI/
-      #     arguments: -syntax-only
-      #     target: bastion.pkr.hcl nginx.pkr.hcl ubuntu.pkr.hcl web.pkr.hcl
-
-      # # build artifact
-      # - name: Build Artifact
-      #   uses: hashicorp/packer-github-actions@master
-      #   with:
-      #     command: build
-      #     arguments: "-color=false -on-error=abort"
-      #     target: bastion.pkr.hcl nginx.pkr.hcl ubuntu.pkr.hcl web.pkr.hcl
-      #     working_directory: AMI/
-      #   env:
-      #     PACKER_LOG: 1
-      #     HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
-      #     HCP_CLIENT_SECRET: ${{ secrets.HCP_CLIENT_SECRET }}
-
-      # # additional steps to process artifacts
+      - name: Packer Build
+        run: packer build bastion.pkr.hcl && packer build nginx.pkr.hcl && packer build ubuntu.pkr.hcl && packer build web.pkr.hcl
