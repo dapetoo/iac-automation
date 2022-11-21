@@ -1,3 +1,12 @@
+packer {
+  required_plugins {
+    amazon = {
+      version = ">= 0.0.2"
+      source  = "github.com/hashicorp/amazon"
+    }
+  }
+}
+
 variable "region" {
   type    = string
   default = "us-east-1"
@@ -22,8 +31,8 @@ source "amazon-ebs" "terraform-bastion-prj-19" {
       root-device-type    = "ebs"
       virtualization-type = "hvm"
     }
-    most_recent = true
-    owners      = ["309956199498"]
+    # most_recent = true
+    owners      = ["548352792118"]
   }
   ssh_username = "ec2-user"
   tag {
