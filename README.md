@@ -1,6 +1,7 @@
 # AUTOMATE INFRASTRUCTURE WITH IAC USING TERRAFORM. PART 2
 
 ### Project Screenshots
+
 ![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/main/screenshots/01.png)
 ![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/main/screenshots/02.png)
 ![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/main/screenshots/03.png)
