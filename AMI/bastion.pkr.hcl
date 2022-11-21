@@ -31,8 +31,8 @@ source "amazon-ebs" "terraform-bastion-prj-19" {
       root-device-type    = "ebs"
       virtualization-type = "hvm"
     }
-    # most_recent = true
-    owners      = ["548352792118"]
+    most_recent = true
+    owners      = ["309956199498"]
   }
   ssh_username = "ec2-user"
   tag {
