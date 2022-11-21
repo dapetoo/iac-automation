@@ -41,7 +41,7 @@ jobs:
           command: build
           arguments: "-color=false -on-error=abort"
           target: bastion.pkr.hcl nginx.pkr.hcl ubuntu.pkr.hcl web.pkr.hcl
-          # working_directory: infrastructure/packer
+          working_directory: AMI/
         env:
           PACKER_LOG: 1
           HCP_CLIENT_ID: ${{ secrets.HCP_CLIENT_ID }}
