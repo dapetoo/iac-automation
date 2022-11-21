@@ -1,0 +1,25 @@
+- name: Install PyMySQL
+  pip:
+    name: pymysql
+    state: present
+    
+- name: create database
+  community.mysql.mysql_db:
+    login_host: "terraform-2022111419444323250000000c.crfrgihjdwjy.us-east-1.rds.amazonaws.com" 
+    login_user: "mshallom"
+    login_password: "1234567890"
+    name: wordpressdb
+    collation: utf8_general_ci
+    encoding: utf8
+    state: present
+
+- name: Input wordpress credentials
+  ansible.builtin.replace:
+    path: /var/www/html/wp-config.php 
+    regexp: "{{ item.regexp }}"
+    replace: "{{ item.line }}"
+  loop:
+    - { regexp: '^localhost', line: "terraform-2022111419444323250000000c.crfrgihjdwjy.us-east-1.rds.amazonaws.com" }
+    - { regexp: '^username_here', line: "mshallom" }
+    - { regexp: '^database_name_here', line: "wordpressdb" }
+    - { regexp: '^password_here', line: "1234567890" }

@@ -1,0 +1,30 @@
+---
+- hosts: tag_Name_RCR_nginx
+- name: nginx assignment
+  import_playbook: ../static-assignments/nginx.yml
+
+- hosts: tag_Name_RCR_tooling 
+- name: tooling assignment
+  import_playbook: ../static-assignments/tooling.yml
+
+- hosts: tag_Name_RCR_wordpress
+- name: wordpress assignment
+  import_playbook: ../static-assignments/wordpress.yml
+
+# - hosts: tag_Name_RCR_jenkins
+# - name: jenkins assignment
+#   import_playbook: ../static-assignments/jenkins.yml  
+
+# - hosts: tag_Name_RCR_artifactory
+# - name: artifactory assignment
+#   import_playbook: ../static-assignments/jfrog.yml
+
+# - hosts: tag_Name_RCR_sonarqube
+#   user: ubuntu
+# - name: sonarqube assignment
+#   import_playbook: ../static-assignments/sonar.yml
+
+
+
+
+

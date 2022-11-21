@@ -1,0 +1,5 @@
+---
+- hosts: tag_Name_RCR_Jenkins
+  become: true
+  roles:
+     - jenkins
