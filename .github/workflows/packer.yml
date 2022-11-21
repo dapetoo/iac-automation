@@ -5,7 +5,7 @@ name: Packer
 on:
   push:
     branches:
-      - terraform-cloud
+      - terraform-cloud-not-exiting
 
 jobs:
   packer:
@@ -23,31 +23,6 @@ jobs:
           arguments: -syntax-only
           target: bastion.pkr.hcl nginx.pkr.hcl ubuntu.pkr.hcl web.pkr.hcl
           working_directory: AMI
-      # - name: Initialize Template
-      #   uses: hashicorp/packer-github-actions@master
-      #   with:
-      #     command: init
-      #     arguments: -syntax-only
-      #     target: bastion.pkr.hcl nginx.pkr.hcl ubuntu.pkr.hcl web.pkr.hcl
-      #     working_directory: AMI
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     AWS_DEFAULT_REGION: us-east-1
-      
-      # - name: Build the Template
-      #   uses: hashicorp/packer-github-actions@master
-      #   with:
-      #     command: build
-      #     arguments: -syntax-only
-      #     target: bastion.pkr.hcl nginx.pkr.hcl ubuntu.pkr.hcl web.pkr.hcl
-      #     working_directory: AMI
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     AWS_DEFAULT_REGION: us-east-1
-      - name: Change directory
-        run: export AWS_ACCESS_KEY_ID=${{ secrets.aws_access_key_id }} && export AWS_ACCESS_KEY_ID=${{ secrets.aws_secret_access_key }}
       - name: Install Packer
         run: curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - && sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" && sudo apt-get update && sudo apt-get install -y packer
       - name: Packer initialization
