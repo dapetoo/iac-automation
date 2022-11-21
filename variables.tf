@@ -1,32 +1,17 @@
 variable "region" {
-  type        = string
-  description = "The region to deploy resources"
-}
-
-variable "environment" {
-  type        = string
-  description = "The environment to deploy resources"
+  default = "us-east-1"
 }
 
 variable "vpc_cidr" {
-  type        = string
-  description = "The VPC cidr"
+  default = "172.16.0.0/16"
 }
 
 variable "enable_dns_support" {
-  type = bool
+  default = "true"
 }
 
 variable "enable_dns_hostnames" {
-  type = bool
-}
-
-variable "enable_classiclink" {
-  type = bool
-}
-
-variable "enable_classiclink_dns_support" {
-  type = bool
+  default = "true"
 }
 
 variable "preferred_number_of_public_subnets" {
@@ -51,10 +36,16 @@ variable "tags" {
   default     = {}
 }
 
+variable "environment" {
+  type        = string
+  description = "Enviroment"
+}
+
 variable "ami" {
   type        = string
   description = "AMI ID for the launch template"
 }
+
 
 variable "keypair" {
   type        = string

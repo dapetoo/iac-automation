@@ -11,6 +11,7 @@ resource "aws_iam_role" "ec2_instance_role" {
           Service = "ec2.amazonaws.com"
         }
       },
+
     ]
   })
   tags = {
@@ -20,7 +21,7 @@ resource "aws_iam_role" "ec2_instance_role" {
 }
 
 resource "aws_iam_policy" "policy" {
-  name        = "ec2_instance_policy"
+  name        = "ec2_instance_policy_terraform"
   description = "A test policy"
   policy = jsonencode({
     Version = "2012-10-17"
@@ -48,7 +49,7 @@ resource "aws_iam_role_policy_attachment" "test-attach" {
 }
 
 resource "aws_iam_instance_profile" "ip" {
-  name = "aws_instance_profile_test"
+  name = "aws_instance_profile_test_terraform"
   role = aws_iam_role.ec2_instance_role.name
 }
 

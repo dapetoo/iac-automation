@@ -5,9 +5,6 @@ resource "aws_vpc" "main" {
   cidr_block                     = var.vpc_cidr
   enable_dns_support             = var.enable_dns_support
   enable_dns_hostnames           = var.enable_dns_hostnames
-  enable_classiclink             = var.enable_classiclink
-  enable_classiclink_dns_support = var.enable_dns_support
-
 
   tags = merge(
     var.tags,
@@ -29,9 +26,6 @@ resource "aws_subnet" "public" {
   cidr_block              = var.public_subnets[count.index]
   map_public_ip_on_launch = true
   availability_zone       = data.aws_availability_zones.available.names[count.index]
-
-
-
   tags = merge(
     var.tags,
     {

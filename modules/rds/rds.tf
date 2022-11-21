@@ -1,6 +1,6 @@
 # This section will create the subnet group for the RDS  instance using the private subnet IDs
 resource "aws_db_subnet_group" "ACS-rds" {
-  name       = "acs-rds"
+  name       = "acs-rds-terraform"
   subnet_ids = var.private_subnets
 
   tags = merge(
