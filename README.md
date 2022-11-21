@@ -73,3 +73,24 @@ terraform init
 
 Using Terraform workspaces
 
+
+### Project Screenshots
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/01.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/02.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/03.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/04.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/05.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/06.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/07.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/08.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/09.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/10.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/11.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/12.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/13.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/14.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/15.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/16.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/17.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/18.png)
+![Project Screenshots](https://github.com/dapetoo/iac-automation/blob/refactoring/screenshots/19.png)
