@@ -1,5 +1,5 @@
 ---
-- hosts: tag_Name_RCR_sonarqube
+- hosts: tag_Name_ACS_sonarqube
   user: ubuntu
   become: true
   roles:

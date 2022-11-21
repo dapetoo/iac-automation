@@ -12,13 +12,13 @@ keyed_groups:
 
 filters:
   tag:Name:
-    - RCR-bastion
-    - RCR-nginx
-    - RCR-tooling
-    - RCR-wordpress
-    # - RCR-sonarqube
-    # - RCR-artifactory
-    # - RCR-Jenkins
+    - ACS-bastion
+    - ACS-nginx
+    - ACS-tooling
+    - ACS-wordpress
+    - ACS-sonarqube
+    - ACS-artifactory
+    - ACS-Jenkins
   instance-state-name : running
   
 hostnames:
