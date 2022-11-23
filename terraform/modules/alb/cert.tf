@@ -38,7 +38,7 @@ resource "aws_acm_certificate_validation" "dapetoo" {
 # create records for tooling
 resource "aws_route53_record" "tooling" {
   zone_id = data.aws_route53_zone.dapetoo.zone_id
-  name    = "tooling.peterdada.me.gq"
+  name    = "tooling"
   type    = "A"
 
   alias {
@@ -52,7 +52,7 @@ resource "aws_route53_record" "tooling" {
 # create records for wordpress
 resource "aws_route53_record" "wordpress" {
   zone_id = data.aws_route53_zone.dapetoo.zone_id
-  name    = "wordpress.peterdada.me.gq"
+  name    = "wordpress"
   type    = "A"
 
   alias {
