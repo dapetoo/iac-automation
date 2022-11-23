@@ -62,5 +62,4 @@ resource "aws_launch_template" "tooling-launch-template" {
       },
     )
   }
-  user_data = filebase64("${path.module}/tooling.sh")
 }
