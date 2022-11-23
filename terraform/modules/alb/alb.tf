@@ -1,12 +1,20 @@
+###################################################################################
 # ----------------------------
-#External Load balancer for reverse proxy nginx
+#External Load Balancers for webservers
 #---------------------------------
+####################################################################################
 resource "aws_lb" "ext-alb" {
-  name            = var.name
-  internal        = false
-  security_groups = [var.public-sg]
+  name     = var.name
+  internal = false
+  security_groups = [
+    var.public-sg
+  ]
 
-  subnets = [var.public-sbn-1, var.public-sbn-2, ]
+  subnets = [
+    var.public-sbn-1,
+    var.public-sbn-2
+  ]
+
   tags = merge(
     var.tags,
     {
@@ -18,7 +26,7 @@ resource "aws_lb" "ext-alb" {
   load_balancer_type = var.load_balancer_type
 }
 
-#--- create a target group for the external load balancer
+
 resource "aws_lb_target_group" "nginx-tgt" {
   health_check {
     interval            = 10
@@ -35,7 +43,6 @@ resource "aws_lb_target_group" "nginx-tgt" {
   vpc_id      = var.vpc_id
 }
 
-#--- create a listener for the load balancer
 resource "aws_lb_listener" "nginx-listner" {
   load_balancer_arn = aws_lb.ext-alb.arn
   port              = 443
@@ -48,16 +55,22 @@ resource "aws_lb_listener" "nginx-listner" {
   }
 }
 
+###################################################################################
 # ----------------------------
 #Internal Load Balancers for webservers
 #---------------------------------
+####################################################################################
 resource "aws_lb" "ialb" {
   name     = "ialb"
   internal = true
+  security_groups = [
+    var.private-sg
+  ]
 
-  security_groups = [var.private-sg]
-
-  subnets = [var.private-sbn-1, var.private-sbn-2, ]
+  subnets = [
+    var.private-sbn-1,
+    var.private-sbn-2
+  ]
 
   tags = merge(
     var.tags,
@@ -69,7 +82,6 @@ resource "aws_lb" "ialb" {
   ip_address_type    = var.ip_address_type
   load_balancer_type = var.load_balancer_type
 }
-
 
 # --- target group  for wordpress -------
 
@@ -91,6 +103,7 @@ resource "aws_lb_target_group" "wordpress-tgt" {
 }
 
 # --- target group for tooling -------
+
 resource "aws_lb_target_group" "tooling-tgt" {
   health_check {
     interval            = 10
@@ -101,7 +114,7 @@ resource "aws_lb_target_group" "tooling-tgt" {
     unhealthy_threshold = 2
   }
 
-  name        = "dapetoo-tooling-tgt"
+  name        = "tooling-tgt"
   port        = 443
   protocol    = "HTTPS"
   target_type = "instance"
@@ -116,6 +129,7 @@ resource "aws_lb_listener" "web-listener" {
   port              = 443
   protocol          = "HTTPS"
   certificate_arn   = aws_acm_certificate_validation.dapetoo.certificate_arn
+
   default_action {
     type             = "forward"
     target_group_arn = aws_lb_target_group.wordpress-tgt.arn
