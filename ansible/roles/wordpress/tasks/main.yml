@@ -2,9 +2,9 @@
 - name: mounting share(s)
   mount:
     path: /var/www
-    src: fs-02a65237c82003023:/
+    src: fs-01407dce71e9b8975:/
     fstype: efs
-    opts: nosuid,noexec,defaults,tls,accesspoint=fsap-04fccdd5c3df3ef48
+    opts: nosuid,noexec,defaults,tls,accesspoint=fsap-06e5b7da69695c20e
     state: mounted
 
 - name: install httpd on the webserver
