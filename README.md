@@ -1,5 +1,33 @@
 # AUTOMATE INFRASTRUCTURE WITH IAC USING TERRAFORM. PART 2
 
+### Networking Concepts
+
+**IP Address** is an Internet Protocol address is a numerical label such as 192.0.2.1 that is connected to a computer network that uses the Internet Protocol for communication. An IP address serves two main functions: network interface identification and location addressing. An IP address is a long string of numbers assigned to every device connected to a network that uses Internet Protocol as the medium for communication; it’s the digital world’s equivalent of the mailing address associated with your home or workplace.
+
+The way Internet Protocol works is that information is transmitted over the network in discrete chunks called packets; each packet is mostly made up of whatever data the sender is trying to communicate, but also includes a header, consisting of metadata about that packet.
+
+**Subnets** Subnetting is used to divide a classful address space into smaller blocks to ease network management, This can be useful for many different purposes and helps isolate groups of hosts from each other to deal with them more easily. eg A college is using the 10.0.0.0 classful private address space. They want to separate buildings, administrative and student networks, and individual rooms.
+
+**IP Routing** is the process of selecting a path for traffic in a network or between multiple networks. IP routing is performed by specialized networking hardware known as routers. Routers are connected to two or more networks and use routing protocols to determine the best path for data packets to travel from one network to another. IP Routing is an umbrella term for the set of protocols that determine the path that data follows in order to travel across multiple networks from its source to its destination. Data is routed from its source to its destination through a series of routers, and across multiple networks. The routers use routing protocols to determine the best path for data to travel from one network to another.
+
+**CIDR Notations** CIDR notation (Classless Inter-Domain Routing) is an alternate method of representing a subnet mask. It is simply a count of the number of network bits (bits that are set to 1) in the subnet mask.
+
+**Internet Gateway** A computer that sits between different networks or applications. The gateway converts information, data or other communications from one protocol or format to another. A router may perform some of the functions of a gateway. An Internet gateway can transfer communications between an enterprise network and the Internet. An internet gateway is a horizontally scaled, redundant, and highly available VPC component that allows communication between your VPC and the internet. Internet Gateway (IGW) allows instances with public IPs to access the internet.
+
+**NAT Gateway** A NAT gateway is a Network Address Translation (NAT) service. You can use a NAT gateway so that instances in a private subnet can connect to services outside your VPC but external services cannot initiate a connection with those instances. It is is used to enable instances present in a private subnet to help connect to the internet.
+
+**OSI Model** The OSI Model (Open Systems Interconnection Model) is a conceptual framework used to describe the functions of a networking system. The OSI model characterizes computing functions into a universal set of rules and requirements in order to support interoperability between different products and software. In the OSI reference model, the communications between a computing system are split into seven different abstraction layers: Physical, Data Link, Network, Transport, Session, Presentation, and Application.
+
+![OSI Model](https://www.imperva.com/learn/wp-content/uploads/sites/13/2020/02/OSI-7-layers.jpg.webp)
+
+**TCP/IP suite** TCP/IP stands for Transmission Control Protocol/Internet Protocol and is a suite of communication protocols used to interconnect network devices on the internet. TCP/IP is also used as a communications protocol in a private computer network (an intranet or extranet).
+
+**Assume Role** AssumeRole. policy and a trust policy attached with the IAM role to allow the IAM user to access the AWS resource using the temporary security credentials. The policy specifies the AWS resource that the IAM user can access and the actions that the IAM user can perform. The trust policy specifies the IAM user that can assume the IAM role.
+
+**Role Policy** The role of policy in an organisation is to: Provide general guidance about the organisation's mission. Provide specific guidance toward implementing strategies to achieve the organisation's mission. IAM Roles vs. Policies. IAM Roles manage who has access to your AWS resources, whereas IAM policies control their permissions. A Role with no Policy attached to it won't have to access any AWS resources.
+
+**VPC** A virtual private cloud (VPC) is a virtual network dedicated to your AWS account. It is logically isolated from other virtual networks in the AWS Cloud. You can launch your AWS resources, such as Amazon EC2 instances, into your VPC. You can specify an IP address range for the VPC, add subnets, associate security groups, and configure route tables.
+
 Steps:
 - Create 4 private subnets
 - Create internet gateway
